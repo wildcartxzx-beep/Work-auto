@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>সিস্টেম পোর্টাল - গ্রামীণফোন ও পেমেন্ট কন্ট্রোল</title>
+<title>অ্যাডমিন কন্ট্রোল প্যানেল - জিপি ও পেমেন্ট অটোমেশন</title>
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 * {
@@ -12,79 +12,164 @@
     box-sizing: border-box;
     font-family: 'Hind Siliguri', sans-serif;
 }
-
 body {
     background: #060e1a;
     color: #f8fafc;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     min-height: 100vh;
-    padding: 15px;
+    padding: 20px;
 }
-
-.card {
+.admin-container {
     width: 100%;
-    max-width: 500px;
+    max-width: 600px;
     background: rgba(11, 26, 46, 0.95);
-    padding: 30px;
+    padding: 25px;
     border-radius: 16px;
-    border: 1px solid rgba(245, 158, 11, 0.3);
+    border: 1px solid rgba(245, 158, 11, 0.4);
     box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+}
+h2 {
+    color: #fbbf24;
+    font-size: 22px;
+    margin-bottom: 20px;
     text-align: center;
 }
-
-.title {
-    font-size: 20px;
-    font-weight: 700;
-    color: #fbbf24;
-    margin-bottom: 20px;
+.section-box {
+    background: rgba(2, 6, 13, 0.6);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(255,255,255,0.05);
 }
-
-.btn-group {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+.section-box h3 {
+    font-size: 16px;
+    color: #38bdf8;
+    margin-bottom: 10px;
 }
-
-.action-btn {
+input, button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    border-radius: 8px;
+    border: none;
+    font-size: 15px;
+}
+input {
+    background: #02060d;
+    color: #fff;
+    border: 1px solid #334155;
+}
+button {
     background: linear-gradient(135deg, #f59e0b, #d97706);
     color: #02060d;
-    border: none;
-    padding: 14px;
-    border-radius: 10px;
-    font-size: 16px;
     font-weight: 700;
     cursor: pointer;
     transition: 0.2s;
-    text-decoration: none;
-    display: block;
 }
-
-.action-btn:hover {
+button:hover {
     opacity: 0.9;
 }
-
-.footer-note {
-    margin-top: 20px;
+.external-btn {
+    background: #2563eb;
+    color: white;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 700;
+    margin-top: 8px;
+}
+.status-log {
+    margin-top: 15px;
+    padding: 10px;
+    background: #02060d;
+    border-radius: 6px;
     font-size: 13px;
-    color: #94a3b8;
+    color: #4ade80;
+    min-height: 50px;
+    max-height: 150px;
+    overflow-y: auto;
+    border: 1px solid #1e293b;
 }
 </style>
 </head>
 <body>
 
-<div class="card">
-    <div class="title">🚀 জিপি ও পেমেন্ট সিস্টেম ড্যাশবোর্ড</div>
-    <div class="btn-group">
-        <a href="https://www.grameenphone.com" target="_blank" class="action-btn">🌐 গ্রামীণফোন পোর্টাল ওপেন করুন</a>
-        <a href="https://sandbox.sslcommerz.com" target="_blank" class="action-btn" style="background: #22c55e; color: white;">💳 এসএসএল পেমেন্ট পেজ ওপেন করুন</a>
+<div class="admin-container">
+    <h2>🛠️ অ্যাডমিন কন্ট্রোল প্যানেল</h2>
+
+    <!-- ১. ট্যাব ভিত্তিক গ্রামীণফোন পোর্টাল অ্যাক্সেস -->
+    <div class="section-box">
+        <h3>১. গ্রামীণফোন পোর্টাল (নতুন ট্যাবে খুলুন)</h3>
+        <p style="font-size: 13px; color: #94a3b8; margin-bottom: 5px;">ব্রাউজার সিকিউরিটির কারণে আইফ্রেমে লোড করা সম্ভব নয়। তাই নতুন ট্যাবে লগইন করে কাজ করুন:</p>
+        <a href="https://www.grameenphone.com" target="_blank" class="external-btn">🌐 জিপি পোর্টাল নতুন ট্যাবে ওপেন করুন</a>
     </div>
-    <div class="footer-note">
-        💡 যেহেতু গ্রামীণফোন সাইট আইফ্রেমে ব্লক করা থাকে, তাই নতুন ট্যাবে ওপেন করে খুব সহজেই ওটিপি নিয়ে কাজ করতে পারবেন।
+
+    <!-- ২. নম্বর ইনপুট ও অটোমেশন -->
+    <div class="section-box">
+        <h3>২. অটোমেশন ও নম্বর সাবমিট</h3>
+        <input type="text" id="phoneNumber" placeholder="যেমন: 017xxxxxxxx">
+        <button onclick="sendNumber()">सर्ভারের মাধ্যমে নম্বর পাঠান</button>
+    </div>
+
+    <!-- ৩. ওটিপি ভেরিফিকেশন -->
+    <div class="section-box">
+        <h3>৩. ওটিপি (OTP) ভেরিফিকেশন</h3>
+        <input type="text" id="otpCode" placeholder="ওটিপি কোড এখানে লিখুন">
+        <button onclick="verifyOtp()">ওটিপি ভেরিফাই করুন</button>
+    </div>
+
+    <!-- ৪. সিস্টেম স্ট্যাটাস -->
+    <div class="section-box">
+        <h3>৪. সিস্টেম স্ট্যাটাস লগ</h3>
+        <div id="statusLog" class="status-log">সিস্টেম প্রস্তুত আছে...</div>
     </div>
 </div>
+
+<script>
+async function logMessage(msg) {
+    const logBox = document.getElementById('statusLog');
+    logBox.innerHTML += `<br>👉 ${msg}`;
+    logBox.scrollTop = logBox.scrollHeight;
+}
+
+async function sendNumber() {
+    let num = document.getElementById('phoneNumber').value;
+    if(!num) return alert('নম্বর দিন!');
+    logMessage(`${num} নম্বরটি প্রসেসিংয়ে পাঠানো হচ্ছে...`);
+    try {
+        let res = await fetch('/api/send-number', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ phoneNumber: num })
+        });
+        let data = await res.json();
+        logMessage(data.message || data.error);
+    } catch (e) {
+        logMessage('এরর: সার্ভারে কানেক্ট করা যায়নি।');
+    }
+}
+
+async function verifyOtp() {
+    let otp = document.getElementById('otpCode').value;
+    if(!otp) return alert('ওটিপি কোড দিন!');
+    logMessage('ওটিপি ভেরিফাই করা হচ্ছে...');
+    try {
+        let res = await fetch('/api/verify-otp', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ otpCode: otp })
+        });
+        let data = await res.json();
+        logMessage(data.message || data.error);
+    } catch (e) {
+        logMessage('এরর: ওটিপি ভেরিফিকেশন ফেইলড।');
+    }
+}
+</script>
 
 </body>
 </html>
